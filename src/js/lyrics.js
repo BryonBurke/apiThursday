@@ -1,29 +1,30 @@
 export class LyricFetch {
   constructor() {
-
+    this.calls = 0;
   }
 
-  getLyricsFetchAwait(artist, title) {
-    const apiPull = async (artist, title) => {
-      const response = await fetch(`https://api.lyrics.ovh/v1/${artist}/${title}`);
-      const myJson = await response.json();
-      return myJson;
-    }
-    return apiPull()
-  }
+  // getLyricsFetchAwait(artist, title) {
+  //   const apiPull = async (artist, title) => {
+  //     const response = await fetch(`https://api.lyrics.ovh/v1/${artist}/${title}`);
+  //     const myJson = await response.json();
+  //     return myJson;
+  //   }
+  //   return apiPull()
+  // }
 
   getLyricsPromise(artist, title) {
+    this.calls++;
     const lyrics = new Promise((resolve, reject) => {
       const requestObj = new XMLHttpRequest();
-      const url = `https://api.lyrics.ovh/v1/${artist}/${title}`
+      const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
       requestObj.onload = function() {
-        if (this.status === 200) {
+        if (this.status === 200 || this.status === 404) {
           const parsedJson = JSON.parse(requestObj.response);
-          resolve(parsedJson.lyrics);
+          resolve(parsedJson);
         } else {
           reject(Error(requestObj.statusText));
         }
-      }
+      };
       requestObj.open("GET", url, true);
       requestObj.send();
     });
