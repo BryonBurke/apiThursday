@@ -5,7 +5,8 @@ import './css/bootstrap.min.css';
 import './css/styles.css';
 
 // MAIN LOGIC
-// import { User } from './js/user.js';
+import { LyricFetch } from './js/lyrics.js';
+
 
 // Images
 // import earth from './img/earth.png';
@@ -23,9 +24,27 @@ import './css/styles.css';
 // USER INTERFACE
 $(document).ready(function(){
 
+  $('#userInput').submit(async (event) => {
+    event.preventDefault();
+
+    const artist = $("#artist").val();
+    const title = $("#title").val();
+    const lyrics = await lyricFetch.getLyricsPromise(artist, title);
+    console.log(lyricFetch.count);
+    if (lyrics.lyrics) {
+      $('#lyrics').text(lyrics.lyrics);
+    } else if (lyrics.error) {
+      $('#lyrics').text(lyrics.error);
+    } else {
+      console.log('OUCH!!!');
+    }
+
+  });
 
 
 
-  
+
+  const lyricFetch = new LyricFetch();
+
 
 });
