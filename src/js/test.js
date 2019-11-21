@@ -1,4 +1,4 @@
-export class ApiFetch {
+export class Test {
   constructor() {
     this.calls = 0;
   }
@@ -13,32 +13,9 @@ export class ApiFetch {
   // }
 
   getLyricsChain(artist, title) {
-    this.calls++;
     return fetch(`https://api.lyrics.ovh/v1/${artist}/${title}`)
     .then((res) => {
       return res.json();
-    });
-  }
-
-  getBC() {
-    this.calls++;
-    return fetch(`https://api.cryptonator.com/api/ticker/btc-usd`)
-    .then((res) => {
-      return res.json();
-    })
-    .then((json) => {
-      return json.ticker.price;
-    });
-  }
-
-  getAuthor() {
-    this.calls++;
-    return fetch(`http://openlibrary.org/works/OL27258W/editions.json?limit=5`)
-    .then((res) => {
-      return res.json();
-    })
-    .then((json) => {
-      return json.entries[2].authors[0].key;
     });
   }
 

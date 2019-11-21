@@ -5,7 +5,8 @@ import './css/bootstrap.min.css';
 import './css/styles.css';
 
 // MAIN LOGIC
-import { LyricFetch } from './js/lyrics.js';
+import { ApiFetch } from './js/lyrics.js';
+
 
 
 // Images
@@ -15,35 +16,63 @@ import { LyricFetch } from './js/lyrics.js';
 // USER INTERFACE
 $(document).ready(function(){
 
-  $('#userInput').submit(async (event) => {
-    event.preventDefault();
+  // $('#userInput').submit(async (event) => {
+  //   event.preventDefault();
+  //   const artist = $("#artist").val();
+  //   const title = $("#title").val();
+  //   const lyrics = await apiFetch.getLyricsChain(artist, title);
+  //   console.log(apiFetch.count);
+  //   $('#lyrics').text('');
+  //   if (lyrics.lyrics) {
+  //     console.log(lyrics.lyrics);
+  //     const cleanLyrics = `<p>${lyrics.lyrics}</p>`;
+  //     $('#lyrics').append(cleanLyrics);
+  //   } else if (lyrics.error) {
+  //     $('#lyrics').text(lyrics.error);
+  //   } else {
+  //     console.log('OUCH!!!');
+  //   }
+  //
+  // });
 
+  $('#userInput').submit((event) => {
+    event.preventDefault();
     const artist = $("#artist").val();
     const title = $("#title").val();
-    const lyrics = await lyricFetch.getLyricsPromise(artist, title);
-    console.log(lyricFetch.count);
     $('#lyrics').text('');
-    if (lyrics.lyrics) {
-      console.log(lyrics.lyrics);
-      const cleanLyrics = `<p>${lyrics.lyrics}</p>`;
-      $('#lyrics').append(cleanLyrics);
-    } else if (lyrics.error) {
-      $('#lyrics').text(lyrics.error);
-    } else {
-      console.log('OUCH!!!');
-    }
-
+    apiFetch.getLyricsChain(artist, title).then((lyrics) => {
+      console.log(apiFetch.calls);
+      if (lyrics.lyrics) {
+        const cleanLyrics = `<p>${lyrics.lyrics}</p>`;
+        $('#lyrics').append(cleanLyrics);
+      } else if (lyrics.error) {
+        $('#lyrics').text(lyrics.error);
+      } else {
+        console.log('OUCH!!!');
+      }
+    });
   });
 
-  $('#bike').click( async () => {
-    const bikes = await lyricFetch.getBikes();
-    console.log(bikes);
+  $('#author').click(() => {
+    apiFetch.getAuthor().then((auth) => {
+      $('.author-id').text(auth);
+      console.log(auth);
+    });
   });
 
+  $('#coin').click(() => {
+    apiFetch.getBC().then((auth) => {
+      $('.bc').text(auth);
+      console.log(auth);
+    });
+  });
 
+  // $('#bike').click( async () => {
+  //   const bikes = await apiFetch.getBikes();
+  //   console.log(bikes);
+  // });
 
-
-  const lyricFetch = new LyricFetch();
+  const apiFetch = new ApiFetch();
 
 
 });
