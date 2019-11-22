@@ -19,7 +19,7 @@ This application takes user input symptoms and uses an api to retrieve a list of
 
 ## Known Bugs
 
-_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
+
 
 ## Support and contact details
 
@@ -34,3 +34,5 @@ This application uses jquery, webpack and the BetterDoctor API.
 This application is Licensed under MIT
 
 Copyright (c) 2016 Bryon Burke
+
+much troubleshooting
