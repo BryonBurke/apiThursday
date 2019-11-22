@@ -10,16 +10,12 @@ import { ApiFetch } from './js/apiFetch.js';
 
 // USER INTERFACE
 $(document).ready(function(){
-
-
-
-  $('#coin').click(() => {
-    apiFetch.getBC().then((auth) => {
-      $('.bc').text(auth);
+  $('#getDoctor').click(() => {
+    apiFetch.getDoctor().then((auth) => {
+      $('.doctorOutput').text(auth);
       console.log(auth);
     });
   });
-
 
   const apiFetch = new ApiFetch();
 

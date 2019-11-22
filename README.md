@@ -1,46 +1,36 @@
-# _{NAME}_
+# Doctor Lookup
 
-#### _Web application {INFORMATION}, {DATE} 2019_
+#### This program accepts a user input symptom and returns a list of doctors who can treat them, 11/22/19
 
-#### By _**Liam Kenna**_
+#### By Bryon Burke
 
 ## Description
 
-_This site is {INFO}_
-
-* _{DETAILS}_
-
-_For example:_
-
-| Input:  | Output:   |
-|---|---|
-|||
-|||
-
-_{DETAILS}_
+This application takes user input symptoms and uses an api to retrieve a list of doctors who can help treat them.
 
 ## Setup/Installation Requirements
 
-* _Clone to local machine and open index.html in the browser_
-* _This site can be viewed in it's current form at https://LiamPKenna.github.io/{PROJECT}_
+* Drag app folder into atom or editor of choice
+* In the terminal type: npm install
+* In the terminal type: npm start
+* A local server will be spun up which can accept user input
 
 
-_To explore the source code, feel free to browse on github or clone to your local machine_
 
 ## Known Bugs
 
-_No known bugs at this time._
+_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
 
 ## Support and contact details
 
-_Any issues or concerns, please email liam@liamkenna.com_
+For support contact bryonparis@gmail.com
 
 ## Technologies Used
 
-_HTML, CSS, Bootstrap, jQuery, JavaScript_
+This application uses jquery, webpack and the BetterDoctor API.
 
 ### License
 
-*This software is available under the MIT License*
+This application is Licensed under MIT
 
-Copyright (c) 2019 **_Liam Kenna_**
+Copyright (c) 2016 Bryon Burke
